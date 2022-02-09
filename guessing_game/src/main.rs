@@ -1,8 +1,9 @@
 use std::io;  //From the standard library, we are bringing the io library into scope
 //By Default, there is a few items in the standard library that rust automatically brings into scope for every program, this is called prelude
+use rand::Rng; // The Rng trait defines methods that random number generators implement, this trait must be in scope
+// for us to use those methods. 
 
-
-
+ 
 
 
 
@@ -11,7 +12,9 @@ fn main() {
     //println! calls a Rust macro. If it called a function instead, it would be entered as println (without the !). 
     //For now, you just need to know that using a ! means that you’re calling a macro instead of a normal function, 
     //and that macros don’t always follow the same rules as functions.
-
+    let secret_number = rand::thread_rng().gen_range(1..101);
+//the rand::thread_rng function that gives us the particular random number generator that we’re going to use: one that is local to the current thread of execution and seeded by the operating system
+    println!("The secrete number is {}", secret_number);
     println!("Please input your guess.");
 
     //In Rust, variables and references are immutable by default.
@@ -30,4 +33,4 @@ fn main() {
     println!("You guessed: {}", guess);
 }
 
-//Ended at Testing the First Part of Guessing game
+//Ended just before the section titled "Comparing the Guess to the Secret Number"
